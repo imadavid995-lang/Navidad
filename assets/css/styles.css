@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+body {
+  background-color: #17324f;
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+pre {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ff0a;
+}
+
+pre span:first-child {
+  color: rgb(255, 255, 0);
+}
+
+pre span:last-child {
+  color: #795548;
+}
+
+.snow {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: -100px;
+}
+
+.snow-floor {
+  width: 100%;
+  height: 3%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+
+.title {
+  color: #fff;
+  font-family: "Lobster";
+  font-weight: lighter;
+}
+
+@keyframes fall {
+  0% {
+    top: -100px;
+  }
+
+  100% {
+    top: 100vh;
+  }
+}
+
+/*#muñecos de nieve*/
+
+.snowman {
+  position: absolute;
+  bottom: 3%;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+}
+
+.snowman.left {
+  left: 40px;
+}
+
+.snowman.right {
+  right: 40px;
+}
+
+/* Cabeza */
+.snowman .head {
+  width: 55px;
+  height: 55px;
+  background: #ffffff;
+  border-radius: 50%;
+  margin-bottom: -6px;
+  position: relative;
+}
+
+/* Ojos */
+.snowman .head::before,
+.snowman .head::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #17324f;
+  border-radius: 50%;
+  position: absolute;
+  top: 18px;
+}
+
+.snowman .head::before {
+  left: 16px;
+}
+
+.snowman .head::after {
+  right: 16px;
+}
+
+/* Nariz */
+.snowman .nose {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 12px solid #ff9800;
+  margin-top: -10px;
+}
+
+/* Cuerpo */
+.snowman .body {
+  width: 85px;
+  height: 85px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+
+/* Botones */
+.snowman .body::before,
+.snowman .body::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #17324f;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.snowman .body::before {
+  top: 25px;
+}
+
+.snowman .body::after {
+  top: 45px;
+}
+
+.hat {
+  position: relative;
+  top: 10px;
+}
+
+.hat-top {
+  width: 40px;
+  height: 35px;
+  background: #000;
+  margin: auto;
+  border-radius: 6px 6px 0 0;
+}
+
+.hat-brim {
+  width: 55px;
+  height: 6px;
+  background: #000;
+  margin: auto;
+  border-radius: 3px;
+}
+
+.scarf {
+  width: 60px;
+  height: 12px;
+  background: red;
+  border-radius: 6px;
+  margin: 4px 0;
+  position: relative;
+}
+
+.scarf::after {
+  content: "";
+  width: 12px;
+  height: 25px;
+  background: green;
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  border-radius: 4px;
+}
+
+.arm {
+  width: 35px;
+  height: 4px;
+  background: #6d4c41;
+  position: absolute;
+  top: 30px;
+}
+
+.left-arm {
+  left: -30px;
+  transform-origin: right;
+}
+
+.right-arm {
+  right: -30px;
+  transform-origin: left;
+  animation: wave 2s infinite ease-in-out;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(-25deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.snowman {
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.5));
+  }
+  to {
+    filter: drop-shadow(0 0 14px rgba(255,255,255,1));
+  }
+}
+
+.snowman.left {
+  animation: walk-left 12s linear infinite;
+}
+
+.snowman.right {
+  animation: walk-right 12s linear infinite;
+}
+
+@keyframes walk-left {
+  0% { left: -150px; }
+  100% { left: 100vw; }
+}
+
+@keyframes walk-right {
+  0% { right: -150px; }
+  100% { right: 100vw; }
+}
+
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
